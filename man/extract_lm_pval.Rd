@@ -7,6 +7,9 @@ then calculates P-value}
 \usage{
 extract_lm_pval(model)
 }
+\arguments{
+\item{model}{an lm object}
+}
 \value{
 pvalues
 }
@@ -15,5 +18,7 @@ extracts F-statistic from a linear model object
 then calculates P-value
 }
 \examples{
+\dontrun{
 pvals <- extract_lm_pval(myModelObj)
+}
 }

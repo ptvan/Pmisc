@@ -4,19 +4,22 @@
 #' is how many expressed genes are common between the gene lists
 #' Phu T. Van, FHCRC 2017, w/ substantial help and input from C.Murie & V.Voillet
 #'
-#' @param plot Boolean indicating whether to draw boxplots using ggplot2
+#' @param expressionList a matrix of gene expression values
+#' @param cameraMat matrix contain output from CAMERA
+#' @param geneSets a list of list of geneIds
+#' @param verbose Boolean whether to print out progress
 #' @return table of genes' mean expression values for each group
 #' @examples
+#' \dontrun{
 #' vDat <- voom(exprs(eDat), design=designMat, plot=FALSE, lib.size=libNorm)
-# res <- camera(vDat, setsIndices, design=designMat, contrast=cons[i], sort=TRUE)
-# geneSets <- geneIds(getGmt(gmtFile))
-# n <- make_gsea_igraph(vDat, res, geneSets)
-# plot(n, edge.width=E(n)$overlap*.1, vertex.color="white", vertex.label.cex=0.5)
+#' res <- camera(vDat, setsIndices, design=designMat, contrast=cons[i], sort=TRUE)
+#' geneSets <- geneIds(getGmt(gmtFile))
+#' n <- make_gsea_igraph(vDat, res, geneSets)
+#' plot(n, edge.width=E(n)$overlap*.1, vertex.color="white", vertex.label.cex=0.5)
+#' }
+#' @import igraph
 
 make_gsea_overlap_igraph <- function(expressionList, cameraMat, geneSets, verbose=FALSE){
-  require(igraph)
-  require(stringr)
-
   # get the geneset categories, and the expressed genes
   geneSetCats <- rownames(cameraMat)
   expressedGenes <- rownames(expressionList$E)

@@ -1,7 +1,5 @@
 WGCNA_one_run <- function(dat, netType="unsigned", pow=NULL, iter=1, defaultPow=3, showPlots=TRUE, ds=1) {
   ## modified from original code by Carl Murie
-  require(WGCNA)
-
   ## calculate power estimate
   powers <- c(1:10, seq(from=12, to=20, by=2))
   sft <- pickSoftThreshold(dat, powerVector=powers, networkType=netType, verbose=5)

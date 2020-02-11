@@ -11,7 +11,13 @@ Phu T. Van, FHCRC 2017, w/ substantial help and input from C.Murie & V.Voillet}
 make_gsea_overlap_igraph(expressionList, cameraMat, geneSets, verbose = FALSE)
 }
 \arguments{
-\item{plot}{Boolean indicating whether to draw boxplots using ggplot2}
+\item{expressionList}{a matrix of gene expression values}
+
+\item{cameraMat}{matrix contain output from CAMERA}
+
+\item{geneSets}{a list of list of geneIds}
+
+\item{verbose}{Boolean whether to print out progress}
 }
 \value{
 table of genes' mean expression values for each group
@@ -24,5 +30,11 @@ is how many expressed genes are common between the gene lists
 Phu T. Van, FHCRC 2017, w/ substantial help and input from C.Murie & V.Voillet
 }
 \examples{
+\dontrun{
 vDat <- voom(exprs(eDat), design=designMat, plot=FALSE, lib.size=libNorm)
+res <- camera(vDat, setsIndices, design=designMat, contrast=cons[i], sort=TRUE)
+geneSets <- geneIds(getGmt(gmtFile))
+n <- make_gsea_igraph(vDat, res, geneSets)
+plot(n, edge.width=E(n)$overlap*.1, vertex.color="white", vertex.label.cex=0.5)
+}
 }

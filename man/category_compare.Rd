@@ -26,7 +26,7 @@ category_compare(
 
 \item{grp1idx}{A vector of integer indices indicating columns belonging to group1}
 
-\item{plot}{Boolean indicating whether to draw boxplots using ggplot2}
+\item{grp2idx}{A vector of integer indices indicating columns belonging to group1}
 }
 \value{
 table of genes' mean expression values for each group
@@ -37,8 +37,7 @@ expression matrix, calculates the number and proportion of genes in the
 input matrix that are up-regulated
 }
 \examples{
-setsIndices <- ids2indices(geneIds, rownames(expressionMatrix))
-categories <- names(setsIndices)
+\dontrun{
 out <- category_compare(expressionMatrix,
                                   setIndices,
                                   grp1name = "control",
@@ -46,4 +45,5 @@ out <- category_compare(expressionMatrix,
                                   which(grepl("control", colnames(expressionMatrix))),
                                   which(grepl("experimental", colnames(expressionMatrix)))
                                   )
+}
 }

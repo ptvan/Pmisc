@@ -1,17 +1,16 @@
 #' compares the mean expression between two groups of genes in a given
 #' expression matrix, calculates the number and proportion of genes in the
 #' input matrix that are up-regulated
+#'
 #' @param dat A matrix of gene expression
 #' @param setsIndices A nested-list of gene indices for each GSEA category, most commonly made from limma::ids2indices()
 #' @param grp1name String indicating name of the first group for the comparison
 #' @param grp2name String indicating name of the second group for the comparison
 #' @param grp1idx A vector of integer indices indicating columns belonging to group1
-#' @param grp1idx A vector of integer indices indicating columns belonging to group1
-#' @param plot Boolean indicating whether to draw boxplots using ggplot2
+#' @param grp2idx A vector of integer indices indicating columns belonging to group1
 #' @return table of genes' mean expression values for each group
 #' @examples
-#'setsIndices <- ids2indices(geneIds, rownames(expressionMatrix))
-#' categories <- names(setsIndices)
+#' \dontrun{
 #' out <- category_compare(expressionMatrix,
 #'                                   setIndices,
 #'                                   grp1name = "control",
@@ -19,10 +18,11 @@
 #'                                   which(grepl("control", colnames(expressionMatrix))),
 #'                                   which(grepl("experimental", colnames(expressionMatrix)))
 #'                                   )
+#' }
+#' @import data.table
+
 
 category_compare <- function(dat, setsIndices, grp1name="group1", grp2name="group2", grp1idx, grp2idx){
-  require(data.table)
-
   if (!is.null(names(setsIndices))){
 
     categories <- names(setsIndices)
