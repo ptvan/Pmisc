@@ -1,16 +1,30 @@
-gene_compare <- function (dat, geneSet, grp1name="group1", grp2name="group2", grp1idx, grp2idx, plot=FALSE){
-  # compares the mean expression between two groups of genes in a given
-  # expression matrix, optionally makes boxplots of the comparison, faceted by gene
-  # used in a pipeline, so checks are pretty rudimentary
+#' compares the mean expression between two groups of genes in a given
+#' expression matrix, optionally makes boxplots of the comparison, faceted by gene
+#' used in a pipeline, so checks are pretty rudimentary
+#'
+#' @param dat A matrix of gene expression
+#' @param geneSet A vector of gene names in the gene expression matrix above
+#' @param grp1name String indicating name of the first group for the comparison
+#' @param grp2name String indicating name of the second group for the comparison
+#' @param grp1idx A vector of integer indices indicating columns belonging to group1
+#' @param grp1idx A vector of integer indices indicating columns belonging to group1
+#' @param plot Boolean indicating whether to draw boxplots using ggplot2
+#' @return table of genes' mean expression values for each group
+#' @examples
+#' out <- gene_compare(expressionMatrix
+#'                    ,c("LAP3","NCOA7","IFIT2","STAT1","TRIM21")
+#'                    ,grp1name = "control"
+#'                    ,grp2name = "experimental"
+#'                    ,which(grepl("control", colnames(expressionMatrix)))
+#'                    ,which(grepl("experimental", colnames(expressionMatrix)))
+#'                                   )
 
-  # example: out <- gene_compare(expressionMatrix
-  #                                    ,c("LAP3","NCOA7","IFIT2","STAT1","TRIM21")
-  #                                   ,grp1name = "control"
-  #                                   ,grp2name = "experimental"
-  #                                   ,which(grepl("control", colnames(expressionMatrix)))
-  #                                   which(grepl("experimental", colnames(expressionMatrix)))
-  #                                   )
-
+gene_compare <- function (dat, geneSet
+                             , grp1name="group1"
+                             , grp2name="group2"
+                             , grp1idx
+                             , grp2idx
+                             , plot=FALSE){
   require(ggplot2)
   require(data.table)
 

@@ -1,18 +1,19 @@
+#' this function takes a bioConductor EList (eg. voom-transformed RNASeq counts)
+#' GSEA output matrix from limma's camera() and a user-specified geneSet
+#' and create an igraph graph where the nodes are gene lists and the edge weight
+#' is how many expressed genes are common between the gene lists
+#' Phu T. Van, FHCRC 2017, w/ substantial help and input from C.Murie & V.Voillet
+#'
+#' @param plot Boolean indicating whether to draw boxplots using ggplot2
+#' @return table of genes' mean expression values for each group
+#' @examples
+#' vDat <- voom(exprs(eDat), design=designMat, plot=FALSE, lib.size=libNorm)
+# res <- camera(vDat, setsIndices, design=designMat, contrast=cons[i], sort=TRUE)
+# geneSets <- geneIds(getGmt(gmtFile))
+# n <- make_gsea_igraph(vDat, res, geneSets)
+# plot(n, edge.width=E(n)$overlap*.1, vertex.color="white", vertex.label.cex=0.5)
+
 make_gsea_overlap_igraph <- function(expressionList, cameraMat, geneSets, verbose=FALSE){
-  # Phu T. Van, FHCRC 2017, w/ substantial help and input from C.Murie & V.Voillet
-
-  # this function takes a bioConductor EList (eg. voom-transformed RNASeq counts),
-  # GSEA output matrix from limma's camera() and a user-specified geneSet
-  # and create an igraph graph where the nodes are gene lists and the edge weight
-  # is how many expressed genes are common between the gene lists
-
-  # example usage:
-  # vDat <- voom(exprs(eDat), design=designMat, plot=FALSE, lib.size=libNorm)
-  # res <- camera(vDat, setsIndices, design=designMat, contrast=cons[i], sort=TRUE)
-  # geneSets <- geneIds(getGmt(gmtFile))
-  # n <- make_gsea_igraph(vDat, res, geneSets)
-  # plot(n, edge.width=E(n)$overlap*.1, vertex.color="white", vertex.label.cex=0.5)
-
   require(igraph)
   require(stringr)
 
@@ -41,7 +42,7 @@ make_gsea_overlap_igraph <- function(expressionList, cameraMat, geneSets, verbos
     tmp[[i]] <- expressedGenes[which(expressedGenes%in%unlist(geneSets[geneSetCats[i]]))]
     names(tmp)[i] <- geneSetCats[i]
   }
-  nms <- combn( names(tmp) , 2 , FUN = paste0 , collapse = "xxx" , simplify = FALSE )
+  nms <- combn( names(tmp), 2 , FUN = paste0 ,collapse = "xxx" ,simplify = FALSE )
   ll <- combn( tmp , 2 , simplify = FALSE )
   edges <- lapply( ll , function(x)  intersect( x[[1]] , x[[2]] )  )
   names(edges) <- nms
