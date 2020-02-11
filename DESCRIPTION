@@ -1,0 +1,12 @@
+Package: Pmisc
+Title: Phu's Misc Functions
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Phu",
+           family = "Van",
+           role = c("aut", "cre"),
+           email = "pvan@alumni.cmu.edu")
+Description: Collected miscellaneous functions
+License: MIT
+Encoding: UTF-8
+LazyData: true
