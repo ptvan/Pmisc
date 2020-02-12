@@ -1,5 +1,22 @@
+#' perform a single run of the Weight Gene Correlation Network Analysis
+#' (WGCNA, Langfelder 2008)
+#' modified from original code by Carl Murie
+#'
+#' @param dat A matrix of gene expression
+#' @param netType String indicating network type, default "unsigned"
+#' @param pow Integer indicating power
+#' @param iter Integer indicating number of iterations
+#' @param defaultPow Integer indicating default power
+#' @param showPlots Boolean indicating whether to plot
+#' @param ds Integer between 0 and 4, tree cutting parameter
+#' @return table of cluster memberships
+#' @examples
+#' \dontrun{
+#' out <- WGCNA_one_run(dat, "unsigned", 1,1,3,TRUE,1)
+#' }
+
+
 WGCNA_one_run <- function(dat, netType="unsigned", pow=NULL, iter=1, defaultPow=3, showPlots=TRUE, ds=1) {
-  ## modified from original code by Carl Murie
   ## calculate power estimate
   powers <- c(1:10, seq(from=12, to=20, by=2))
   sft <- pickSoftThreshold(dat, powerVector=powers, networkType=netType, verbose=5)

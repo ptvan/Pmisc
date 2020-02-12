@@ -1,6 +1,6 @@
 Package: Pmisc
 Title: Phu's Misc Functions
-Version: 0.0.0.9000
+Version: 0.0.0.1
 Authors@R: person("Phu", "Van", email = "pvan@alumni.cmu.edu",
                   role = c("aut", "cre"))
 Description: Collected functions.

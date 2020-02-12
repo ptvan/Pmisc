@@ -6,7 +6,7 @@
 #' \dontrun{
 #' pvals <- extract_lm_pval(myModelObj)
 #' }
-#' @import stats
+
 
 extract_lm_pval <- function (model){
   if ( class(model) != "lm") stop("Not an object of class 'lm' ")
