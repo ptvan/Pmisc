@@ -14,6 +14,9 @@
 #' \dontrun{
 #' out <- WGCNA_one_run(dat, "unsigned", 1,1,3,TRUE,1)
 #' }
+#' @import WGCNA
+#' @import graphics
+#' @import dynamicTreeCut
 
 
 WGCNA_one_run <- function(dat, netType="unsigned", pow=NULL, iter=1, defaultPow=3, showPlots=TRUE, ds=1) {
