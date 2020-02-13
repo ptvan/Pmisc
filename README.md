@@ -1,2 +1,2 @@
 # Pmisc
-R package of miscellaneous functions
+Collected functions, useful in certain RNASeq and flow cytometry analysis workflows.
