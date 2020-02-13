@@ -1,9 +1,9 @@
 Package: Pmisc
 Title: Phu's Misc Functions
-Version: 0.0.0.1
+Version: 0.0.0.2
 Authors@R: person("Phu", "Van", email = "pvan@alumni.cmu.edu",
                   role = c("aut", "cre"))
-Description: Collected functions.
+Description: Collected functions, useful in certain RNASeq and flow cytometry analysis workflows.
 License: MIT
 Encoding: UTF-8
 LazyData: true
@@ -11,10 +11,18 @@ RoxygenNote: 7.0.2
 Imports: 
     utils,
     graphics,
+    gridExtra,
+    sp,
     limma,
     WGCNA,
     dynamicTreeCut,
     ggplot2,
+    RColorBrewer,
     data.table,
     igraph,
-    stringr
+    stringr,
+    STRINGdb,
+    ggbiplot,
+    pheatmap,
+    dbscan
+    
