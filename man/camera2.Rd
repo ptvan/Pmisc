@@ -19,16 +19,30 @@ camera2(
 )
 }
 \arguments{
-\item{expressionList}{a matrix of gene expression values}
+\item{y}{a matrix of gene expression values}
 
-\item{cameraMat}{matrix contain output from CAMERA}
+\item{index}{`camera` parameter}
 
-\item{geneSets}{a list of list of geneIds}
+\item{design}{`camera` parameter}
 
-\item{verbose}{Boolean whether to print out progress}
+\item{contrast}{`camera` parameter}
+
+\item{weights}{`camera` parameter}
+
+\item{use.ranks}{`camera` parameter}
+
+\item{allow.neg.cor}{`camera` parameter}
+
+\item{inter.gene.cor}{`camera` parameter}
+
+\item{trend.var}{`camera` parameter}
+
+\item{sort}{`camera` parameter}
+
+\item{...}{other parameters to be passed to `camera()`}
 }
 \value{
-table of genes' mean expression values for each group
+list of 2 tables: summary of weights, and gene-level values
 }
 \description{
 A wrapper around limma::camera() that returns the weights

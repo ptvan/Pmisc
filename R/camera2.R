@@ -1,10 +1,17 @@
 #' A wrapper around limma::camera() that returns the weights
 #'
-#' @param expressionList a matrix of gene expression values
-#' @param cameraMat matrix contain output from CAMERA
-#' @param geneSets a list of list of geneIds
-#' @param verbose Boolean whether to print out progress
-#' @return table of genes' mean expression values for each group
+#' @param y a matrix of gene expression values
+#' @param index `camera` parameter
+#' @param design `camera` parameter
+#' @param contrast `camera` parameter
+#' @param weights `camera` parameter
+#' @param use.ranks `camera` parameter
+#' @param allow.neg.cor `camera` parameter
+#' @param inter.gene.cor `camera` parameter
+#' @param trend.var `camera` parameter
+#' @param sort `camera` parameter
+#' @param ... other parameters to be passed to `camera()`
+#' @return list of 2 tables: summary of weights, and gene-level values
 #' @import limma
 
 camera2 <- function (y, index, design = NULL, contrast = ncol(design), weights = NULL,

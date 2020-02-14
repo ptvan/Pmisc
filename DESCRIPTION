@@ -24,5 +24,6 @@ Imports:
     STRINGdb,
     ggbiplot,
     pheatmap,
-    dbscan
-    
+    dbscan,
+    COMPASS
+
