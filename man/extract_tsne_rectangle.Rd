@@ -2,7 +2,7 @@
 % Please edit documentation in R/extract_tsne_rectangle.R
 \name{extract_tsne_rectangle}
 \alias{extract_tsne_rectangle}
-\title{plots the output of a tsne run on ICS flow data, highlights user-specified window, and return
+\title{plots the output of a tSNE run on ICS flow data, overlays user-specified window, and return
 cell events within that window. Also perform t.test() on extracted events}
 \usage{
 extract_tsne_rectangle(
@@ -40,6 +40,6 @@ extract_tsne_rectangle(
 \item{title}{plot title}
 }
 \description{
-plots the output of a tsne run on ICS flow data, highlights user-specified window, and return
+plots the output of a tSNE run on ICS flow data, overlays user-specified window, and return
 cell events within that window. Also perform t.test() on extracted events
 }

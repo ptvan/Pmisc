@@ -5,6 +5,7 @@
 #' @param minpts param to be passed to `dbscan()`
 #' 
 #' @import dbscan
+#' @import data.table
 
 cluster_with_dbscan <- function(dat, epsilon, minpts = 5 ) {
   out <- dbscan(dat[,.(x,y)], eps = epsilon)

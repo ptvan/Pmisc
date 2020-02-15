@@ -1,4 +1,4 @@
-#' plots the output of a tsne run on ICS flow data, highlights user-specified window, and return
+#' plots the output of a tSNE run on ICS flow data, overlays user-specified window, and return
 #' cell events within that window. Also perform t.test() on extracted events
 
 #' @param dat RTsne output matrix
@@ -17,7 +17,6 @@
 #' @import RColorBrewer
 #' @import sp
 #' @import pheatmap
-
 
 extract_tsne_rectangle <- function(dat, x_min, x_max, y_min, y_max, antigen, marker, polyDegree = 0 , facet, title) {
   facet <- as.symbol(facet)
@@ -84,6 +83,3 @@ extract_tsne_rectangle <- function(dat, x_min, x_max, y_min, y_max, antigen, mar
   print(m)
   return(tmp)
 }
-
-
-

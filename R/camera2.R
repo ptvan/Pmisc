@@ -1,4 +1,4 @@
-#' A wrapper around limma::camera() that returns the weights
+#' A wrapper around limma::camera() that returns weights of the linear model
 #'
 #' @param y a matrix of gene expression values
 #' @param index `camera` parameter
@@ -12,6 +12,7 @@
 #' @param sort `camera` parameter
 #' @param ... other parameters to be passed to `camera()`
 #' @return list of 2 tables: summary of weights, and gene-level values
+#' 
 #' @import limma
 
 camera2 <- function (y, index, design = NULL, contrast = ncol(design), weights = NULL,

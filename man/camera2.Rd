@@ -2,7 +2,7 @@
 % Please edit documentation in R/camera2.R
 \name{camera2}
 \alias{camera2}
-\title{A wrapper around limma::camera() that returns the weights}
+\title{A wrapper around limma::camera() that returns weights of the linear model}
 \usage{
 camera2(
   y,
@@ -45,5 +45,5 @@ camera2(
 list of 2 tables: summary of weights, and gene-level values
 }
 \description{
-A wrapper around limma::camera() that returns the weights
+A wrapper around limma::camera() that returns weights of the linear model
 }
