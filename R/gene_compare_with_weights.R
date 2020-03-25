@@ -22,6 +22,7 @@
 #' }
 #' @import ggplot2
 #' @import data.table
+#' @import reshape2
 
 gene_compare_with_weights <- function (dat, camera2output, genesetidx, grp1name="group1", grp2name="group2", grp1idx, grp2idx){
 
@@ -52,7 +53,7 @@ gene_compare_with_weights <- function (dat, camera2output, genesetidx, grp1name=
       idxs[grp1idx] <- grp1name
       idxs[grp2idx] <- grp2name
       idx <- data.frame(cbind(cols,idxs))
-      d <- data.table(merge(melt(dat), idx, by.x="Var2", by.y="cols"))
+      d <- data.table(merge(reshape2::melt(dat), idx, by.x="Var2", by.y="cols"))
       setnames(d, c("Var1","Var2","value", "idxs")
                , c("geneName", "inputColumn","expr","group"))
 
