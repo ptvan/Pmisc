@@ -42,7 +42,7 @@ gene_compare <- function (dat, geneSet
       idxs[grp1idx] <- grp1name
       idxs[grp2idx] <- grp2name
       idx <- data.frame(cbind(cols,idxs))
-      d <- merge(reshape2:melt(dat, measure.vars=colnames(dat)), idx, by.x="variable", by.y="cols")
+      d <- data.table(merge(reshape2::melt(dat), idx, by.x="Var2", by.y="cols"))
       setnames(d, c("Var1","Var2","value", "idxs")
                , c("geneName", "inputColumn","expr","group"))
 
