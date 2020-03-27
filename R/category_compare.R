@@ -37,7 +37,7 @@ category_compare <- function(dat, setsIndices, grp1name="group1", grp2name="grou
       cat <- categories[i]
       cidxs <- unlist(setsIndices[cat], use.names = F)
       tab[tab$category==cat]$totalGenes <- length(cidxs)
-      d <- dat[cidxs,]
+      d <- data.table(dat[cidxs,])
 
       if (length(grp1idx) + length(grp2idx) == ncol(d) && !identical(grp1idx, grp2idx)){
         rows <- rownames(d)
@@ -46,7 +46,7 @@ category_compare <- function(dat, setsIndices, grp1name="group1", grp2name="grou
         idxs[grp1idx] <- grp1name
         idxs[grp2idx] <- grp2name
         idx <- data.frame(cbind(cols,idxs))
-        d <- data.table(merge(melt(d), idx, by.x="Var2", by.y="cols"))
+        d <- merge(melt(d, measure.vars=colnames(d)), idx, by.x="variable", by.y="cols")
         setnames(d, c("Var1","Var2","value", "idxs")
                  , c("geneName", "inputColumn","expr","group"))
 
