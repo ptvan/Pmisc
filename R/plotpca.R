@@ -1,6 +1,6 @@
 #' this is a convenience wrapper to make plotting PCA biplots a bit nicer
-# it removes data columns that have zero variance, which do not 
-#' contribute tothe PCs but interferes with plotting
+#' it removes data columns that have zero variance, which do not 
+#' contribute to the PCs but interferes with plotting
 #' it also colors the groups with user-supplied labels
 
 #' @param df data.frame of input data
@@ -11,9 +11,7 @@
 #' @return a ggplot2 plot
 #' @import ggbiplot
 
-plotpca <- function (df, title=NULL, labels=NULL, varname.adjust=2) {
-
-  
+plotpca <- function (df, title=NULL, labels=NULL, varname.adjust=2, ...) {
   # remove data columns that have zero variance
   df <- df[,apply(df,2,var, na.rm=TRUE) != 0]
   # run PCA
@@ -26,13 +24,13 @@ plotpca <- function (df, title=NULL, labels=NULL, varname.adjust=2) {
   if (is.null(labels)){
     # no labels
     out <- ggbiplot(pcobj,...) +
-    ggtitle(title)
+      ggtitle(title)
     
   } else {
     
     out <- ggbiplot(pcobj, groups=labels, ...) +
-    ggtitle(title) +
-    geom_text(aes(label=labels))
+      ggtitle(title) +
+      geom_text(aes(label=labels))
   }
   print(out)  
   return(out)
